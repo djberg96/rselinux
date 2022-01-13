@@ -18,17 +18,16 @@ module Linux
 
         security_get_boolean_names(names, length)
 
-        #length.read_int.times do |i|
-        pointer1 = names.read_pointer
-        pointer2 = pointer1.read_pointer
-        string =  pointer2.read_string
-        p string
+        outer_pointer = names.read_pointer
+        array = Array.new(length.read_int)
 
-        pointer1 += FFI::Type::POINTER.size
-        pointer2 = pointer1.read_pointer
-        string =  pointer2.read_string
-        p string
-        #end
+        array.size.times do |i|
+          inner_pointer = outer_pointer.read_pointer
+          array[i] = inner_pointer.read_string
+          outer_pointer += FFI::Type::POINTER.size
+        end
+
+        array
       end
 
       def get_enforcement
@@ -51,4 +50,4 @@ module Linux
   end
 end
 
-Linux::SELinux::Security.get_boolean_names
+p Linux::SELinux::Security.get_boolean_names
