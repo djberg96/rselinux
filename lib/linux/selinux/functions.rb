@@ -12,6 +12,7 @@ module Linux
     module SecurityFunctions
       extend FFI::Library
       ffi_lib :selinux
+      attach_function :security_get_boolean_names, [:pointer, :pointer], :int
       attach_function :security_getenforce, [], :int
       attach_function :security_setenforce, [:int], :int
       attach_function :security_policyvers, [], :int

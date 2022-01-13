@@ -11,7 +11,26 @@ module Linux
     module_function :enabled?
 
     module Security
-      extend Linux::SELinux::Functions
+      extend Linux::SELinux::SecurityFunctions
+      def get_boolean_names
+        names = FFI::MemoryPointer.new(:pointer)
+        length = FFI::MemoryPointer.new(:int)
+
+        security_get_boolean_names(names, length)
+
+        #length.read_int.times do |i|
+        pointer1 = names.read_pointer
+        pointer2 = pointer1.read_pointer
+        string =  pointer2.read_string
+        p string
+
+        pointer1 += FFI::Type::POINTER.size
+        pointer2 = pointer1.read_pointer
+        string =  pointer2.read_string
+        p string
+        #end
+      end
+
       def get_enforcement
         security_getenforce
       end
@@ -24,6 +43,7 @@ module Linux
         security_policyvers
       end
 
+      module_function :get_boolean_names
       module_function :get_enforcement
       module_function :set_enforcement
       module_function :policy_version
@@ -31,4 +51,4 @@ module Linux
   end
 end
 
-p Linux::SELinux.enabled?
+Linux::SELinux::Security.get_boolean_names
