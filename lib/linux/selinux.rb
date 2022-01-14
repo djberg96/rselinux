@@ -12,6 +12,58 @@ module Linux
       selinux_booleans_path
     end
 
+    def binary_policy_path
+      selinux_binary_policy_path
+    end
+
+    def colors_path
+      selinux_colors_path
+    end
+
+    def contexts_path
+      selinux_contexts_path
+    end
+
+    def current_policy_path
+      selinux_current_policy_path
+    end
+
+    def customizable_types_path
+      selinux_customizable_types_path
+    end
+
+    def default_context_path
+      selinux_default_context_path
+    end
+
+    def default_type_path
+      selinux_default_type_path
+    end
+
+    def failsafe_context_path
+      selinux_failsafe_context_path
+    end
+
+    def file_context_homedir_path
+      selinux_file_context_homedir_path
+    end
+
+    def file_context_local_path
+      selinux_file_context_local_path
+    end
+
+    def file_context_path
+      selinux_file_context_path
+    end
+
+    def file_context_subs_path
+      selinux_file_context_subs_path
+    end
+
+    def file_context_subs_dist_path
+      selinux_file_context_subs_dist_path
+    end
+
     module_function :enabled?
     module_function :booleans_path
 
