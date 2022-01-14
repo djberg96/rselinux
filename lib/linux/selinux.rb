@@ -8,7 +8,12 @@ module Linux
       is_selinux_enabled || is_selinux_mls_enabled
     end
 
+    def booleans_path
+      selinux_booleans_path
+    end
+
     module_function :enabled?
+    module_function :booleans_path
 
     module Security
       extend Linux::SELinux::SecurityFunctions
@@ -50,4 +55,4 @@ module Linux
   end
 end
 
-p Linux::SELinux::Security.get_boolean_names
+p Linux::SELinux.booleans_path
