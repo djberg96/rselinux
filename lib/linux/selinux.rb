@@ -8,17 +8,25 @@ module Linux
       is_selinux_enabled || is_selinux_mls_enabled
     end
 
+    module_function :enabled?
+
     def booleans_path
       selinux_booleans_path
     end
+
+    module_function :booleans_path
 
     def binary_policy_path
       selinux_binary_policy_path
     end
 
+    module_function :binary_policy_path
+
     def colors_path
       selinux_colors_path
     end
+
+    module_function :colors_path
 
     def contexts_path
       selinux_contexts_path
@@ -64,8 +72,6 @@ module Linux
       selinux_file_context_subs_dist_path
     end
 
-    module_function :enabled?
-    module_function :booleans_path
 
     module Security
       extend Linux::SELinux::SecurityFunctions
