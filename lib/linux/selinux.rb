@@ -32,46 +32,67 @@ module Linux
       selinux_contexts_path
     end
 
+    module_function :contexts_path
+
     def current_policy_path
       selinux_current_policy_path
     end
+
+    module_function :current_policy_path
 
     def customizable_types_path
       selinux_customizable_types_path
     end
 
+    module_function :customizable_types_path
+
     def default_context_path
       selinux_default_context_path
     end
+
+    module_function :default_context_path
 
     def default_type_path
       selinux_default_type_path
     end
 
+    module_function :default_type_path
+
     def failsafe_context_path
       selinux_failsafe_context_path
     end
+
+    module_function :failsafe_context_path
 
     def file_context_homedir_path
       selinux_file_context_homedir_path
     end
 
+    module_function :file_context_homedir_path
+
     def file_context_local_path
       selinux_file_context_local_path
     end
+
+    module_function :file_context_local_path
 
     def file_context_path
       selinux_file_context_path
     end
 
+    module_function :file_context_path
+
     def file_context_subs_path
       selinux_file_context_subs_path
     end
+
+    module_function :file_context_subs_path
 
     def file_context_subs_dist_path
       selinux_file_context_subs_dist_path
     end
 
+    module_function :file_context_subs_dist_path
 
     module Security
       extend Linux::SELinux::SecurityFunctions

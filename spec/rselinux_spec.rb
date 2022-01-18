@@ -22,5 +22,15 @@ RSpec.describe Linux::SELinux do
       expect(described_class.colors_path).to be_kind_of(String)
       expect(described_class.colors_path).to end_with('secolor.conf')
     end
+
+    example "contexts_path returns expected value" do
+      expect(described_class.contexts_path).to be_kind_of(String)
+      expect(described_class.contexts_path).to end_with('contexts')
+    end
+
+    example "current_policy_path returns expected value" do
+      expect(described_class.current_policy_path).to be_kind_of(String)
+      expect(described_class.current_policy_path).to end_with('policy')
+    end
   end
 end
