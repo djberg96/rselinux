@@ -53,4 +53,14 @@ RSpec.describe Linux::SELinux do
       expect(described_class.failsafe_context_path).to end_with('failsafe_context')
     end
   end
+
+  context "security functions" do
+    subject{ Linux::SELinux::Security }
+
+    example "get_boolean_names returns expected value" do
+      expect(subject.get_boolean_names).to be_kind_of(Array)
+      expect(subject.get_boolean_names.size).to be > 10
+      expect(subject.get_boolean_names).to all(be_a(String))
+    end
+  end
 end
