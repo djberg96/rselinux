@@ -81,6 +81,17 @@ RSpec.describe Linux::SELinux do
 
   context "security functions" do
     subject{ Linux::SELinux::Security }
+    let(:boolean_name) { "domain_fd_use" }
+
+    example "get_boolean_active returns expected value" do
+      expect(subject.get_boolean_active(boolean_name)).to be_kind_of(Integer)
+      expect(subject.get_boolean_active(boolean_name)).to eq(0).or eq(1)
+    end
+
+    example "get_boolean_pending returns expected value" do
+      expect(subject.get_boolean_pending(boolean_name)).to be_kind_of(Integer)
+      expect(subject.get_boolean_pending(boolean_name)).to eq(0).or eq(1)
+    end
 
     example "get_boolean_names returns expected value" do
       expect(subject.get_boolean_names).to be_kind_of(Array)
@@ -91,6 +102,11 @@ RSpec.describe Linux::SELinux do
     example "get_enforcement returns expected value" do
       expect(subject.get_enforcement).to be_kind_of(Integer)
       expect(subject.get_enforcement).to eq(0).or eq(1)
+    end
+
+    example "policy_version returns expected value" do
+      expect(subject.policy_version).to be_kind_of(Integer)
+      expect(subject.policy_version).to be > 0
     end
   end
 end

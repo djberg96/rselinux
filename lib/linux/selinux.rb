@@ -96,6 +96,19 @@ module Linux
 
     module Security
       extend Linux::SELinux::SecurityFunctions
+
+      def get_boolean_active(name)
+        security_get_boolean_active(name)
+      end
+
+      module_function :get_boolean_active
+
+      def get_boolean_pending(name)
+        security_get_boolean_pending(name)
+      end
+
+      module_function :get_boolean_pending
+
       def get_boolean_names
         names = FFI::MemoryPointer.new(:pointer)
         length = FFI::MemoryPointer.new(:int)
