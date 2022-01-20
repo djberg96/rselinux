@@ -52,6 +52,31 @@ RSpec.describe Linux::SELinux do
       expect(described_class.failsafe_context_path).to be_kind_of(String)
       expect(described_class.failsafe_context_path).to end_with('failsafe_context')
     end
+
+    example "file_context_homedir_path returns expected value" do
+      expect(described_class.file_context_homedir_path).to be_kind_of(String)
+      expect(described_class.file_context_homedir_path).to end_with('file_contexts.homedirs')
+    end
+
+    example "file_context_local_path returns expected value" do
+      expect(described_class.file_context_local_path).to be_kind_of(String)
+      expect(described_class.file_context_local_path).to end_with('file_contexts.local')
+    end
+
+    example "file_context_path returns expected value" do
+      expect(described_class.file_context_path).to be_kind_of(String)
+      expect(described_class.file_context_path).to end_with('file_contexts')
+    end
+
+    example "file_context_subs_path returns expected value" do
+      expect(described_class.file_context_subs_path).to be_kind_of(String)
+      expect(described_class.file_context_subs_path).to end_with('file_contexts.subs')
+    end
+
+    example "file_context_subs_dist_path returns expected value" do
+      expect(described_class.file_context_subs_dist_path).to be_kind_of(String)
+      expect(described_class.file_context_subs_dist_path).to end_with('file_contexts.subs_dist')
+    end
   end
 
   context "security functions" do
@@ -61,6 +86,11 @@ RSpec.describe Linux::SELinux do
       expect(subject.get_boolean_names).to be_kind_of(Array)
       expect(subject.get_boolean_names.size).to be > 10
       expect(subject.get_boolean_names).to all(be_a(String))
+    end
+
+    example "get_enforcement returns expected value" do
+      expect(subject.get_enforcement).to be_kind_of(Integer)
+      expect(subject.get_enforcement).to eq(0).or eq(1)
     end
   end
 end
