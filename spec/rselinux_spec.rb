@@ -85,6 +85,31 @@ RSpec.describe Linux::SELinux do
       expect(described_class.file_context_subs_dist_path).to be_kind_of(String)
       expect(described_class.file_context_subs_dist_path).to end_with('file_contexts.subs_dist')
     end
+
+    example "lxc_contexts_path returns expected value" do
+      expect(described_class.lxc_contexts_path).to be_kind_of(String)
+      expect(described_class.lxc_contexts_path).to end_with('lxc_contexts')
+    end
+
+    example "media_context_path returns expected value" do
+      expect(described_class.media_context_path).to be_kind_of(String)
+      expect(described_class.media_context_path).to end_with('media')
+    end
+
+    example "netfilter_context_path returns expected value" do
+      expect(described_class.netfilter_context_path).to be_kind_of(String)
+      expect(described_class.netfilter_context_path).to end_with('netfilter_contexts')
+    end
+
+    example "path returns expected value" do
+      expect(described_class.path).to be_kind_of(String)
+      expect(described_class.path).to end_with('selinux/')
+    end
+
+    example "policy_root returns expected value" do
+      expect(described_class.policy_root).to be_kind_of(String)
+      expect(described_class.policy_root).to end_with('selinux/targeted')
+    end
   end
 
   context "security functions" do

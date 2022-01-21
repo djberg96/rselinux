@@ -107,6 +107,36 @@ module Linux
 
     module_function :get_enforce_mode
 
+    def lxc_contexts_path
+      selinux_lxc_contexts_path
+    end
+
+    module_function :lxc_contexts_path
+
+    def media_context_path
+      selinux_media_context_path
+    end
+
+    module_function :media_context_path
+
+    def netfilter_context_path
+      selinux_netfilter_context_path
+    end
+
+    module_function :netfilter_context_path
+
+    def path
+      selinux_path
+    end
+
+    module_function :path
+
+    def policy_root
+      selinux_policy_root
+    end
+
+    module_function :policy_root
+
     module Security
       extend Linux::SELinux::SecurityFunctions
 
