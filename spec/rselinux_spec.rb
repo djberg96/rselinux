@@ -2,9 +2,17 @@ require 'linux/selinux'
 require 'rspec'
 
 RSpec.describe Linux::SELinux do
-  example "enabled? method returns a boolean" do
-    expect(described_class).to respond_to(:enabled?)
-    expect(described_class.enabled?).to eq(true)
+  context "selinux" do
+    example "enabled? method returns a boolean" do
+      expect(described_class).to respond_to(:enabled?)
+      expect(described_class.enabled?).to eq(true)
+    end
+
+    example "get_enforce_mode returns expected value" do
+      expect(described_class).to respond_to(:get_enforce_mode)
+      expect(described_class.get_enforce_mode).to be_kind_of(Integer)
+      expect(described_class.get_enforce_mode).to eq(1).or eq(0).or eq(-1)
+    end
   end
 
   context "path functions" do

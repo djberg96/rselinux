@@ -94,6 +94,19 @@ module Linux
 
     module_function :file_context_subs_dist_path
 
+    def get_enforce_mode
+      value = nil
+
+      FFI::MemoryPointer.new(:int) do |ptr|
+        selinux_getenforcemode(ptr)
+        value = ptr.read_int
+      end
+
+      value
+    end
+
+    module_function :get_enforce_mode
+
     module Security
       extend Linux::SELinux::SecurityFunctions
 

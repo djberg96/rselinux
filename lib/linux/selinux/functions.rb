@@ -21,6 +21,9 @@ module Linux
       attach_function :selinux_file_context_path, [], :string
       attach_function :selinux_file_context_subs_path, [], :string
       attach_function :selinux_file_context_subs_dist_path, [], :string
+      attach_function :selinux_file_context_verify, [:string, :mode_t], :int
+
+      attach_function :selinux_getenforcemode, [:pointer], :int
     end
 
     module SecurityFunctions
@@ -32,8 +35,6 @@ module Linux
       attach_function :security_getenforce, [], :int
       attach_function :security_setenforce, [:int], :int
       attach_function :security_policyvers, [], :int
-
-      attach_function :selinux_getenforcemode, [:pointer], :int
     end
   end
 end
