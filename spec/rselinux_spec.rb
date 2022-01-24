@@ -112,6 +112,25 @@ RSpec.describe Linux::SELinux do
     end
   end
 
+  context "status" do
+    subject{ Linux::SELinux::Status }
+
+    example "policy_load returns expected value" do
+      expect(subject.policy_load).to be_kind_of(Integer)
+      expect(subject.policy_load).to eq(-1).or be > 0
+    end
+
+    example "updated returns expected value" do
+      expect(subject.updated).to be_kind_of(Integer)
+      expect(subject.updated).to eq(-1).or eq(0).or eq(1)
+    end
+
+    example "deny_unknown returns expected value" do
+      expect(subject.deny_unknown).to be_kind_of(Integer)
+      expect(subject.deny_unknown).to eq(-1).or eq(0).or eq(1)
+    end
+  end
+
   context "security functions" do
     subject{ Linux::SELinux::Security }
     let(:boolean_name) { "domain_fd_use" }

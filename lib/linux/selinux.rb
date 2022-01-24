@@ -137,6 +137,28 @@ module Linux
 
     module_function :policy_root
 
+    module Status
+      extend Linux::SELinux::Functions
+
+      def policy_load
+        selinux_status_policyload
+      end
+
+      module_function :policy_load
+
+      def updated
+        selinux_status_updated
+      end
+
+      module_function :updated
+
+      def deny_unknown
+        selinux_status_deny_unknown
+      end
+
+      module_function :deny_unknown
+    end
+
     module Security
       extend Linux::SELinux::SecurityFunctions
 
