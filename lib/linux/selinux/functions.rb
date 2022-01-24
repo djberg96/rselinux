@@ -29,7 +29,9 @@ module Linux
       attach_function :selinux_path, [], :string
       attach_function :selinux_policy_root, [], :string
 
+      attach_function :selinux_status_close, [], :void
       attach_function :selinux_status_deny_unknown, [], :int
+      attach_function :selinux_status_open, [:int], :int
       attach_function :selinux_status_policyload, [], :int
       attach_function :selinux_status_updated, [], :int
     end

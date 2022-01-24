@@ -117,7 +117,7 @@ RSpec.describe Linux::SELinux do
 
     example "policy_load returns expected value" do
       expect(subject.policy_load).to be_kind_of(Integer)
-      expect(subject.policy_load).to eq(-1).or be > 0
+      expect(subject.policy_load).to eq(-1).or be >= 0
     end
 
     example "updated returns expected value" do
