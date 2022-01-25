@@ -137,6 +137,42 @@ module Linux
 
     module_function :policy_root
 
+    def user_contexts_path
+      selinux_user_contexts_path
+    end
+
+    module_function :user_contexts_path
+
+    def users_path
+      selinux_users_path
+    end
+
+    module_function :users_path
+
+    def usersconf_path
+      selinux_usersconf_path
+    end
+
+    module_function :usersconf_path
+
+    def virtual_domain_context_path
+      selinux_virtual_domain_context_path
+    end
+
+    module_function :virtual_domain_context_path
+
+    def virtual_image_context_path
+      selinux_virtual_image_context_path
+    end
+
+    module_function :virtual_image_context_path
+
+    def x_context_path
+      selinux_x_context_path
+    end
+
+    module_function :x_context_path
+
     module Status
       extend Linux::SELinux::Functions
 

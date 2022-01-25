@@ -28,6 +28,12 @@ module Linux
       attach_function :selinux_netfilter_context_path, [], :string
       attach_function :selinux_path, [], :string
       attach_function :selinux_policy_root, [], :string
+      attach_function :selinux_user_contexts_path, [], :string
+      attach_function :selinux_users_path, [], :string
+      attach_function :selinux_usersconf_path, [], :string
+      attach_function :selinux_virtual_domain_context_path, [], :string
+      attach_function :selinux_virtual_image_context_path, [], :string
+      attach_function :selinux_x_context_path, [], :string
 
       attach_function :selinux_status_close, [], :void
       attach_function :selinux_status_deny_unknown, [], :int

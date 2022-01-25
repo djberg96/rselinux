@@ -110,6 +110,36 @@ RSpec.describe Linux::SELinux do
       expect(described_class.policy_root).to be_kind_of(String)
       expect(described_class.policy_root).to end_with('selinux/targeted')
     end
+
+    example "user_contexts_paths returns expected value" do
+      expect(described_class.user_contexts_path).to be_kind_of(String)
+      expect(described_class.user_contexts_path).to end_with('targeted/contexts/users/')
+    end
+
+    example "users_path returns expected value" do
+      expect(described_class.users_path).to be_kind_of(String)
+      expect(described_class.users_path).to end_with('targeted/users/')
+    end
+
+    example "usersconf_path returns expected value" do
+      expect(described_class.usersconf_path).to be_kind_of(String)
+      expect(described_class.usersconf_path).to end_with('targeted/seusers')
+    end
+
+    example "virtual_domain_context_path returns expected value" do
+      expect(described_class.virtual_domain_context_path).to be_kind_of(String)
+      expect(described_class.virtual_domain_context_path).to end_with('contexts/virtual_domain_context')
+    end
+
+    example "virtual_image_context_path returns expected value" do
+      expect(described_class.virtual_image_context_path).to be_kind_of(String)
+      expect(described_class.virtual_image_context_path).to end_with('contexts/virtual_image_context')
+    end
+
+    example "x_context_path returns expected value" do
+      expect(described_class.x_context_path).to be_kind_of(String)
+      expect(described_class.x_context_path).to end_with('contexts/x_contexts')
+    end
   end
 
   context "status" do
