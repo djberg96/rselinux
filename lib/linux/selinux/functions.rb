@@ -42,6 +42,31 @@ module Linux
       attach_function :selinux_status_updated, [], :int
     end
 
+    module ContextFunctions
+      extend FFI::Library
+      ffi_lib :selinux
+      attach_function :context_free, [:pointer], :void
+      attach_function :context_new, [:string], :pointer
+      attach_function :context_range_get, [:pointer], :string
+      attach_function :context_range_set, [:pointer, :string], :int
+      attach_function :context_role_get, [:pointer], :string
+      attach_function :context_role_set, [:pointer, :string], :int
+      attach_function :context_str, [:pointer], :string
+      attach_function :context_type_get, [:pointer], :string
+      attach_function :context_type_set, [:pointer, :string], :int
+      attach_function :context_user_get, [:pointer], :string
+      attach_function :context_user_set, [:pointer, :string], :int
+
+      attach_function :get_default_context, [:string, :string, :pointer], :int
+      attach_function :get_default_context_with_level, [:string, :string, :pointer], :int
+      attach_function :get_default_context_with_role, [:string, :string, :pointer], :int
+      attach_function :get_default_context_with_rolelevel, [:string, :string, :pointer], :int
+      attach_function :get_ordered_context_list, [:string, :string, :pointer], :int
+      attach_function :get_ordered_context_list_with_level, [:string, :string, :pointer], :int
+      attach_function :manual_user_enter_context, [:string, :string, :pointer], :int
+      attach_function :query_user_context, [:pointer, :pointer], :int
+    end
+
     module SecurityFunctions
       extend FFI::Library
       ffi_lib :selinux
