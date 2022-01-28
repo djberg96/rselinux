@@ -173,6 +173,25 @@ module Linux
 
     module_function :x_context_path
 
+    module Context
+      extend Linux::SELinux::Functions
+      extend Linux::SELinux::ContextFunctions
+
+      def default_context(user, from = nil)
+        begin
+          newcon = FFI::MemoryPointer.new(:char)
+          int = get_default_context(user, from, newcon)
+          raise SystemCallError.new(FFI.errno) if int < 0
+        ensure
+          #freecon(newcon)
+        end
+        p newcon
+        newcon.read_string
+      end
+
+      module_function :default_context
+    end
+
     module Status
       extend Linux::SELinux::Functions
 
@@ -262,5 +281,3 @@ module Linux
     end
   end
 end
-
-p Linux::SELinux.booleans_path

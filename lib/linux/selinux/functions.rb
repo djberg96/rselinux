@@ -5,6 +5,9 @@ module Linux
     module Functions
       extend FFI::Library
       ffi_lib :selinux
+
+      attach_function :freecon, [:string], :int
+      attach_function :freeconary, [:pointer], :int
       attach_function :is_selinux_enabled, [], :bool
       attach_function :is_selinux_mls_enabled, [], :bool
       attach_function :selinux_binary_policy_path, [], :string

@@ -1,5 +1,6 @@
 require 'linux/selinux'
 require 'rspec'
+require 'etc'
 
 RSpec.describe Linux::SELinux do
   context "selinux" do
@@ -139,6 +140,16 @@ RSpec.describe Linux::SELinux do
     example "x_context_path returns expected value" do
       expect(described_class.x_context_path).to be_kind_of(String)
       expect(described_class.x_context_path).to end_with('contexts/x_contexts')
+    end
+  end
+
+  context "context" do
+    subject{ Linux::SELinux::Context }
+    let(:user) { Etc.getlogin }
+
+    example "default_context returns expected value" do
+      expect(subject.default_context(user)).to be_kind_of(String)
+      expect(subject.default_context(user)).to eq('foo')
     end
   end
 
