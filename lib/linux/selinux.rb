@@ -173,6 +173,10 @@ module Linux
 
     module_function :x_context_path
 
+    module AVC
+      extend Linux::SELinux::AVCFunctions
+    end
+
     module Context
       extend Linux::SELinux::Functions
       extend Linux::SELinux::ContextFunctions

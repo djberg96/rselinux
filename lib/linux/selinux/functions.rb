@@ -45,6 +45,51 @@ module Linux
       attach_function :selinux_status_updated, [], :int
     end
 
+    module AVCFunctions
+      extend FFI::Library
+
+      class SecurityId < FFI::Struct
+        layout(:ctx, :string, :refcnt, :uint)
+      end
+
+      ffi_lib :selinux
+      attach_function :avc_add_callback, [:pointer], :int
+
+      attach_function :avc_audit,
+        [SecurityId, SecurityId, :ushort, :uint, :pointer, :int, :pointer],
+        :void
+
+      attach_function :avc_av_stats, [:void], :void
+      attach_function :avc_cache_stats, [:pointer], :void
+      attach_function :avc_cleanup, [:void], :void
+      attach_function :avc_compute_create, [SecurityId, SecurityId, :ushort, :pointer], :int
+      attach_function :avc_compute_member, [SecurityId, SecurityId, :ushort, :pointer], :int
+      attach_function :avc_context_to_sid, [:string, :pointer], :int
+      attach_function :avc_context_to_sid_raw, [:string, :pointer], :int
+      attach_function :avc_destroy, [:void], :void
+      attach_function :avc_get_initial_sid, [:string, :pointer], :int
+
+      attach_function :avc_has_perm,
+        [SecurityId, SecurityId, :ushort, :uint, :pointer, :pointer],
+        :int
+
+      attach_function :avc_has_perm_noaudit,
+        [SecurityId, SecurityId, :ushort, :uint, :pointer, :pointer],
+        :int
+
+      attach_function :avc_netlink_acquire_fd, [:void], :int
+      attach_function :avc_netlink_check_nb, [:void], :int
+      attach_function :avc_netlink_close, [:void], :void
+      attach_function :avc_netlink_loop, [:void], :void
+      attach_function :avc_netlink_open, [:int], :int
+      attach_function :avc_netlink_release_fd, [:void], :void
+      attach_function :avc_open, [:pointer, :uint], :int
+      attach_function :avc_reset, [:void], :int
+      attach_function :avc_sid_stats, [:void], :void
+      attach_function :avc_sid_to_context, [SecurityId, :string], :int
+      attach_function :avc_sid_to_context_raw, [SecurityId, :string], :int
+    end
+
     module ContextFunctions
       extend FFI::Library
       ffi_lib :selinux
