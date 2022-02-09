@@ -1,6 +1,18 @@
 module Linux
   module SELinux
     module Constants
+      SELINUX_CB_LOG = 0
+      SELINUX_CB_AUDIT = 1
+      SELINUX_CB_VALIDATE = 2
+      SELINUX_CB_SETENFORCE = 3
+      SELINUX_CB_POLICYLOAD = 4
+
+      SELINUX_AVD_FLAGS_PERMISSIVE = 0x0001
+
+      MATCHPATHCON_BASEONLY = 1
+      MATCHPATHCON_NOTRANS = 2
+      MATCHPATHCON_VALIDATE = 4
+
       module LabelConstants
         SELABEL_CTX_FILE = 0
         SELABEL_CTX_MEDIA = 1
