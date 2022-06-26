@@ -16,12 +16,13 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rspec', '~> 3.9')
 
   spec.metadata = {
-    'homepage_uri'      => 'https://github.com/djberg96/rselinux',
-    'bug_tracker_uri'   => 'https://github.com/djberg96/rselinux/issues',
-    'changelog_uri'     => 'https://github.com/djberg96/rselinux/blob/main/CHANGES.md',
-    'documentation_uri' => 'https://github.com/djberg96/rselinux/wiki',
-    'source_code_uri'   => 'https://github.com/djberg96/rselinux',
-    'wiki_uri'          => 'https://github.com/djberg96/rselinux/wiki'
+    'homepage_uri'          => 'https://github.com/djberg96/rselinux',
+    'bug_tracker_uri'       => 'https://github.com/djberg96/rselinux/issues',
+    'changelog_uri'         => 'https://github.com/djberg96/rselinux/blob/main/CHANGES.md',
+    'documentation_uri'     => 'https://github.com/djberg96/rselinux/wiki',
+    'source_code_uri'       => 'https://github.com/djberg96/rselinux',
+    'wiki_uri'              => 'https://github.com/djberg96/rselinux/wiki',
+    'rubygems_mfa_required' => 'true'
   }
 
   spec.platform = Gem::Platform.new(['universal', 'linux'])
