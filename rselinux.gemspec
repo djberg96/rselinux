@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir['test/test*.rb']
   spec.cert_chain = Dir['certs/*']
 
+  spec.add_development_dependency('ffi')
   spec.add_development_dependency('rake')
   spec.add_development_dependency('rspec', '~> 3.9')
 
